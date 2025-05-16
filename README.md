@@ -1,145 +1,143 @@
 # WeWantWaste Skip Selection Redesign
 
-## Project Overview
+## 🚀 Project Overview
 
-This project is a redesign of the skip selection page for **WeWantWaste**, a waste management service. The goal was to improve the user interface and experience while maintaining the existing functionality. The application allows users to select waste types, specify heavy waste details, and proceed to skip selection.
+WeWantWaste is a waste‑management service focused on helping users choose the right skip for their needs. This repository contains a redesigned **Skip Selection** flow, improving usability while preserving core functionality:
 
-## Live Demo
+* **Select waste types** (e.g., plasterboard, heavy waste)
+* **Specify quantities** and special requirements
+* **Filter, compare, and choose** from available skips
 
-[View the live demo](https://codesandbox.io/p/devbox/8yxltq)
+## 🎨 Live Demo
 
-## Technologies Used
+Try out the redesign in your browser:
 
-* **React 19** – For building the user interface
-* **TypeScript** – Static typing for improved developer experience
-* **Vite** – Fast bundler and development server
-* **Tailwind CSS** – Utility-first CSS framework for styling
-* **Framer Motion** – Declarative animations and transitions
-* **React Icons** – Icon library for React
-* **ESLint** – Linting and code quality enforcement
-* **PostCSS + Autoprefixer** – CSS processing pipeline for vendor prefixes
+[View Live Demo →](https://codesandbox.io/p/devbox/8yxltq)
 
-## Installation and Setup
+## 🛠 Technologies
 
-1. Clone the repository:
+* **React** (v18+) & **TypeScript**
+* **Vite** for fast bundling and HMR
+* **Tailwind CSS** with PostCSS & Autoprefixer
+* **Framer Motion** for animations
+* **React Icons** library
+* **ESLint** for code quality
+
+## 📥 Installation & Setup
+
+1. **Clone the repo**
 
    ```bash
    git clone https://github.com/ZxPower145/REMWaste.git
    cd REMWaste
    ```
-
-2. Install dependencies:
+2. **Install dependencies**
 
    ```bash
    npm install
    ```
-
-3. Start the development server:
+3. **Start development server**
 
    ```bash
    npm run dev
    ```
-
 4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-## Project Structure
+## 📂 Project Structure
 
-```bash
+```
 src/
-├── components/           
-│   ├── modal/            # Modular modal components
-│   │   ├── ModalFooter.tsx
-│   │   ├── ModalHeader.tsx
-│   │   ├── PercentageTab.tsx
-│   │   ├── PlasterboardTab.tsx
-│   │   ├── TabNavigation.tsx
-│   │   ├── TypesTab.tsx
-│   │   └── WarningBanner.tsx
-│   ├── WasteCard.tsx     # Card component for waste types
-│   ├── WasteModal.tsx    # Main modal wrapper for heavy waste details
-│   └── CustomSlider.tsx  # Custom slider component
-├── hooks/
-│   └── useMediaQuery.tsx # Hook for responsive design
-├── pages/
-│   └── WasteTypeSelection.tsx # Main waste type selection page
-├── providers/
-│   └── WasteSelectorProvider.tsx # Context for waste state management
-├── types/
-│   └── Waste.ts          # Types for waste and skips
-├── app.css               # Global Tailwind + custom CSS
-├── App.tsx               # Root app component
-├── global.d.ts           # Global type declarations
-├── main.tsx              # Entry point for React + Vite
-└── vite-env.d.ts         # Vite environment types
+├─ app.css                    # Tailwind + custom styles
+├─ main.tsx                   # React entry point
+├─ App.tsx                    # Root component
+├─ global.d.ts                # Global type declarations
+├─ vite-env.d.ts              # Vite environment types
+├─ components/
+│  ├─ CustomSlider.tsx        # Range slider for weights
+│  ├─ modal/                  # Waste‐detail modal subcomponents
+│  │  ├─ ModalHeader.tsx
+│  │  ├─ WarningBanner.tsx
+│  │  ├─ TabNavigation.tsx
+│  │  ├─ TypesTab.tsx
+│  │  ├─ PercentageTab.tsx
+│  │  ├─ PlasterboardTab.tsx
+│  │  └─ ModalFooter.tsx
+│  ├─ skip/                   # Skip‐selection UI
+│  │  ├─ SkipFilterBar.tsx
+│  │  ├─ SkipCard.tsx
+│  │  └─ SkipComparisonModal.tsx
+│  └─ waste/                  # Waste‐selection UI
+│     ├─ WasteCard.tsx
+│     └─ WasteModal.tsx
+├─ hooks/
+│  └─ useMediaQuery.ts        # Responsive hook
+├─ pages/
+│  ├─ WasteTypeSelection.tsx  # Initial waste‐type screen
+│  └─ SkipSelectPage.tsx      # Skip selection with filters
+├─ providers/
+│  └─ WasteSelectorProvider.tsx  # Context for waste state
+└─ types/
+   └─ Waste.ts                # Waste & skip interfaces
 ```
 
-## Design Decisions
+## 🧩 Design Decisions
 
-### Modular Architecture
+### Modular Components
 
-The `WasteModal` component has been split into smaller, manageable pieces:
+* **Modal** broken into Header, Tabs, WarningBanner, Footer → easier to maintain and test.
+* **Skip UI** separated into FilterBar, SkipCard, ComparisonModal.
 
-* **ModalHeader** – Title and close button
-* **WarningBanner** – Consistent warning messages
-* **TabNavigation** – Switch between modal tabs
-* **TypesTab**, **PercentageTab**, **PlasterboardTab** – Tab contents
-* **ModalFooter** – Footer navigation and actions
+### Responsive & Accessible
 
-This modular design improves maintainability, readability, and testability.
+* Mobile‑first with `useMediaQuery` hook.
+* Semantic HTML, ARIA labels, keyboard navigation.
+* High‑contrast, WCAG‑compliant colors.
 
-### Responsive Design
+### Animations & Interactions
 
-* Uses `useMediaQuery` to adapt layout based on screen size
-* Mobile-first design with conditional layouts
-* Fixed footer behavior on mobile for enhanced usability
+* Smooth transitions via Framer Motion.
+* Micro‑interactions for hover and selection.
+* Modals animate into view, maintaining context.
 
-### Accessibility Improvements
+## ✅ Key Features
 
-* Semantic HTML and ARIA attributes
-* Focus management and keyboard navigation
-* High contrast and WCAG-compliant color usage
+1. **Dynamic Filtering**
 
-### Animation and Interaction
+   * Road placement, size, price, heavy‑waste support
+   * Real‑time updates on user input
+2. **Skip Comparison**
 
-* Smooth layout transitions using **Framer Motion**
-* Micro-interactions (hover, selection feedback)
-* Modal animations that visually connect with content
+   * Select up to 3 skips side‑by‑side
+   * Compare prices (pre‑VAT, VAT, total), periods, and specs
+3. **Skip Size Guide**
 
-## Challenges and Solutions
+   * 4–6 yd³ small skips for minor jobs
+   * 8–10 yd³ medium for renovations
+   * 12–16 yd³ large for big projects
+   * 20–40 yd³ roll‑on/roll‑off for industrial use
 
-### 1. Complex Modal State Management
+## 🔮 Future Improvements
 
-**Solution**: Context + modular components helped simplify the state logic.
+* Persist selections in localStorage
+* Add unit & integration tests
+* Full accessibility audit
+* i18n support
+* Skip‑placement calendar picker
+* 3D skip size visualizations
+* Smart recommendation engine
 
-### 2. Responsive Layout with Fixed Footer
+## 🔌 API Integration
 
-**Solution**: `ResizeObserver` dynamically adjusts padding based on footer height.
+Skip data is fetched dynamically:
 
-### 3. Performance with Animations
-
-**Solution**: Leveraged `Framer Motion` layout animations and optimized component re-renders using `React.memo`.
-
-## Future Improvements
-
-1. Persist waste selection state in localStorage
-2. Add unit and integration tests
-3. Improve accessibility audit coverage
-4. Further optimize animation performance
-5. Support multiple languages (i18n)
-
-## API Integration
-
-The app dynamically loads skip data from the WeWantWaste API:
-
-```typescript
-fetch(`https://app.wewantwaste.co.uk/api/skips/by-location?postcode=${postcode}&area=${area}`)
-  .then((r) => r.json())
+```ts
+fetch(
+  `https://app.wewantwaste.co.uk/api/skips/by-location?postcode=${postcode}&area=${area}`
+)
+  .then((res) => res.json())
   .then((data: Skip[]) => setSkips(data));
 ```
 
-This data is used to populate the skip options based on the user's location and waste type selections.
+## ✉️ Contact
 
-## Contact
-
-Have questions or feedback?
-📧 [costinbogdan245@gmail.com](mailto:costinbogdan245@gmail.com)
+Questions or feedback? 📧 [costinbogdan245@gmail.com](mailto:costinbogdan245@gmail.com)
