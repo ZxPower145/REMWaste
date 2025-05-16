@@ -30,7 +30,7 @@ const WasteTypeSelection: React.FC = () => {
 			name: "Household Waste",
 			description: "General household items and furniture",
 			icon: <FaHome className="w-5 h-5 md:w-6 md:h-6" />,
-			enabled: true,
+			enabled: false,
 			examples: ["Furniture", "Appliances", "Garden waste", "General household items"],
 		},
 		{
@@ -54,7 +54,7 @@ const WasteTypeSelection: React.FC = () => {
 			name: "Commercial Waste",
 			description: "Business and office clearance",
 			icon: <FaBuilding className="w-5 h-5 md:w-6 md:h-6" />,
-			enabled: true,
+			enabled: false,
 			examples: ["Office furniture", "Shop fittings", "Equipment", "Commercial debris"],
 		},
 	]
