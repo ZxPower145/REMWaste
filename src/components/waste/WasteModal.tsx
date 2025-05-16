@@ -3,18 +3,18 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useWasteSelection } from "../providers/WasteSelectorProvider"
+import { useWasteSelection } from "../../providers/WasteSelectorProvider.tsx"
 import { GiStoneBlock, GiBrickWall, GiStonePile } from "react-icons/gi"
 import { MdLandscape } from "react-icons/md"
-import { useMediaQuery } from "../hooks/useMediaQuery"
+import { useMediaQuery } from "../../hooks/useMediaQuery.tsx"
 
 // Import modular components
-import ModalHeader from "./modal/ModalHeader"
-import WarningBanner from "./modal/WarningBanner"
-import TabNavigation from "./modal/TabNavigation"
-import TypesTab from "./modal/TypesTab"
-import PercentageTab from "./modal/PercentageTab"
-import PlasterboardTab from "./modal/PlasterboardTab"
+import ModalHeader from "../modal/ModalHeader.tsx"
+import WarningBanner from "../modal/WarningBanner.tsx"
+import TabNavigation from "../modal/TabNavigation.tsx"
+import TypesTab from "../modal/TypesTab.tsx"
+import PercentageTab from "../modal/PercentageTab.tsx"
+import PlasterboardTab from "../modal/PlasterboardTab.tsx"
 
 /**
  * WasteModal component - A comprehensive modal for collecting detailed waste information
@@ -95,7 +95,7 @@ const WasteModal: React.FC = () => {
 
 	const handleContinue = () => {
 		// In a real application, this would navigate to the skip selection page
-		alert("Continue to skip selection")
+		setStep("skip-selection")
 	}
 
 	// Get the position of the selected card for animation

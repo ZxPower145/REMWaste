@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { FaHome, FaTree, FaBuilding, FaInfoCircle } from "react-icons/fa"
 import { useWasteSelection } from "../providers/WasteSelectorProvider"
 import type { WasteType } from "../types/Waste"
-import WasteCard from "../components/WasteCard"
+import WasteCard from "../components/waste/WasteCard.tsx"
 import { useMediaQuery } from "../hooks/useMediaQuery"
 
 /**

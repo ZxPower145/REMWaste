@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { motion } from "framer-motion"
-import type { WasteType } from "../types/Waste"
+import type { WasteType } from "../../types/Waste.ts"
 
 interface WasteCardProps {
 	wasteType: WasteType

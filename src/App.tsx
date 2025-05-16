@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import type { Skip } from "./types/Waste"
 import { useWasteSelection } from "./providers/WasteSelectorProvider"
 import WasteTypeSelection from "./pages/WasteTypeSelection"
-import WasteModal from "./components/WasteModal"
+import WasteModal from "./components/waste/WasteModal"
 import {
   FaMapMarkerAlt,
   FaTrash,
@@ -18,6 +18,7 @@ import {
   FaBars,
 } from "react-icons/fa"
 import { useMediaQuery } from "./hooks/useMediaQuery"
+import SkipSelectPage from "./pages/SkipSelectPage"
 
 /**
  * App component - Main application component
@@ -108,15 +109,15 @@ const App: React.FC = () => {
   // Navigation steps configuration
   const navSteps = [
     { id: "postcode", label: "Postcode", icon: <FaMapMarkerAlt />, status: "completed" },
-    { id: "waste-type", label: "Waste Type", icon: <FaTrash />, status: "current" },
-    { id: "skip", label: "Select Skip", icon: <FaTruck />, status: "upcoming" },
+    { id: "waste-type", label: "Waste Type", icon: <FaTrash />, status: "completed" },
+    { id: "skip", label: "Select Skip", icon: <FaTruck />, status: "current" },
     { id: "permit", label: "Permit Check", icon: <FaClipboardCheck />, status: "upcoming" },
     { id: "date", label: "Choose Date", icon: <FaCalendarAlt />, status: "upcoming" },
     { id: "payment", label: "Payment", icon: <FaCreditCard />, status: "upcoming" },
   ]
 
   return (
-    <div className="min-h-screen max-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-white flex flex-col overflow-y-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 text-white flex flex-col">
       {/* Header */}
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
@@ -197,14 +198,15 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Main content - dynamic padding based on footer height */}
+      {/* Main content - modified to have proper overflow handling */}
       <main
-        className="flex-grow container mx-auto py-6 px-4 md:h-[calc(100vh-140px)] overflow-y-auto scrollbar-custom"
+        className="flex-grow container mx-auto py-6 px-4 overflow-y-auto"
         style={{ paddingBottom: isMobile ? `${footerHeight + 16}px` : "0" }}
       >
         <AnimatePresence mode="wait">
           {step === "waste-type" && <WasteTypeSelection key="waste-selection" />}
           {step === "heavy-waste-modal" && <WasteModal key="waste-modal" />}
+          {step === "skip-selection" && <SkipSelectPage key="skip-select-page" />}
         </AnimatePresence>
       </main>
 
