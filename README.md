@@ -12,7 +12,7 @@ WeWantWaste is a waste‑management service focused on helping users choose the 
 
 Try out the redesign in your browser:
 
-[View Live Demo →](https://codesandbox.io/p/devbox/8yxltq)
+[View Live Demo →](https://8yxltq-5173.csb.app/)
 
 ## 🛠 Technologies
 
